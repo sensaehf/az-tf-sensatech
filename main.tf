@@ -27,12 +27,12 @@ resource "azurerm_resource_group" "rg-terraform-stg" {
 }
 
 module "mod_stg_tfstgtommitest" {
-  source = "./modules/storagesAccount"
-  location = "westeurope"
-  access_tier = "Hot"
-  resource_group_name = azurerm_resource_group.rg-terraform-stg.name
-  name = "tfstgtommitest"
-  account_tier = "Standard"
+  source                   = "./modules/storagesAccount"
+  location                 = "westeurope"
+  access_tier              = "Hot"
+  resource_group_name      = azurerm_resource_group.rg-terraform-stg.name
+  name                     = "tfstgtommitest"
+  account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
