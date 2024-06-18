@@ -21,10 +21,17 @@ provider "azurerm" {
   use_oidc = true
 }
 
+/*
+  All resources for: rg-terraform-stg
+*/
 resource "azurerm_resource_group" "rg-terraform-stg" {
   name     = "rg-terraform-stg"
   location = "westeurope"
+  tags = {
+    TerraformStatus = "Managed"
+  }
 }
+
 
 module "mod_stg_tfstgtommitest" {
   source                   = "./modules/storagesAccount"
