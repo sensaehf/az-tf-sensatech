@@ -2,6 +2,12 @@ name: 'Terraform'
 on:
   push:
     branches: [ "main" ]
+    paths-ignore: 
+      - ".devcontainer/**"
+      - ".github/**"
+      - ".gitignore"
+      - ".terraform.lock.hcl"
+      - "README.md"
     
 permissions:
   contents: read
