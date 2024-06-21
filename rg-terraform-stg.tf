@@ -46,7 +46,7 @@ module "mod_stg_tfstgtommitest" {
   account_replication_type = "LRS"
 }
 
-
+//KV for secrets to be used in Terraform
 resource "azurerm_key_vault" "TerraformSecrets" {
   location            = azurerm_resource_group.rg-terraform-stg.location
   resource_group_name = azurerm_resource_group.rg-terraform-stg.name
