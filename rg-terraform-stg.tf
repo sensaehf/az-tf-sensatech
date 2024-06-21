@@ -21,6 +21,9 @@ provider "azurerm" {
   use_oidc = true
 }
 
+// Tenant Data for Key vault
+data "azurerm_client_config" "current" {}
+
 /*
   All resources for: rg-terraform-stg
 */
@@ -43,3 +46,11 @@ module "mod_stg_tfstgtommitest" {
   account_replication_type = "LRS"
 }
 
+
+resource "azurerm_key_vault" "TerraformSecrets" {
+  location = azurerm_resource_group.rg-terraform-stg.location
+  resource_group_name = azurerm_resource_group.rg-terraform-stg.name
+  name = "terraformsecrets-sensatech"
+  tenant_id = "${data.azurerm_client_config.current.tenant_id}"
+  sku_name = "standard"
+}
