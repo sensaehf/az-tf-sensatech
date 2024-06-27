@@ -12,8 +12,10 @@ Test to use terraform for sensatech azure management
 graph TD;
     modules-->DSC_Test.tf;
     modules-->rg-terraform-stg.tf;
+    modules-->DigiCertTest.tf;
     DSC_Test.tf-->tfstate.tf;
     rg-terraform-stg.tf-->tfstate.tf;
+    DigiCertTest.tf-->tfstate.tf;
     tfstate.tf-->Azure;
 ```
 
