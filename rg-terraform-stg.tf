@@ -24,6 +24,11 @@ provider "azurerm" {
 // Tenant Data for Key vault
 data "azurerm_client_config" "current" {}
 
+data "azurerm_key_vault" "terraformsecrets" {
+  name                = "tfsecretssensatech"
+  resource_group_name = azurerm_resource_group.rg-terraform-stg.name
+}
+
 /*
   All resources for: rg-terraform-stg
 */

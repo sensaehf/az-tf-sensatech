@@ -1,3 +1,18 @@
+data "azurerm_key_vault_secret" "DigicertTest-wa-AZURE-MDM-SECRET" {
+  name         = "DigicertTest-wa-AZURE-MDM-SECRET"
+  key_vault_id = data.azurerm_key_vault.terraformsecrets.id
+}
+
+data "azurerm_key_vault_secret" "DigicertTest-wa-DIGICERT-APISECRET" {
+  name         = "DigicertTest-wa-DIGICERT-APISECRET"
+  key_vault_id = data.azurerm_key_vault.terraformsecrets.id
+}
+
+data "azurerm_key_vault_secret" "DigicertTest-wa-MICROSOFT-PROVIDER-AUTHENTICATION-SECRET" {
+  name         = "DigicertTest-wa-MICROSOFT-PROVIDER-AUTHENTICATION-SECRET"
+  key_vault_id = data.azurerm_key_vault.terraformsecrets.id
+}
+
 resource "azurerm_resource_group" "DigicertTest" {
   location = "northeurope"
   name     = "DigicertTest"
@@ -24,6 +39,13 @@ resource "azurerm_service_plan" "DigicertTest_sp" {
   ]
 }
 resource "azurerm_linux_web_app" "DigicertTest_wa" {
+  app_settings = {
+    AZURE_MDM_CLIENT                         = "4a332128-094d-4f36-9ebd-348edbb79df2"
+    AZURE_MDM_SECRET                         = sensitive(data.azurerm_key_vault_secret.DigicertTest-wa-AZURE-MDM-SECRET.value)
+    DIGICERT_APISECRET                       = sensitive(data.azurerm_key_vault_secret.DigicertTest-wa-DIGICERT-APISECRET.value)
+    MICROSOFT_PROVIDER_AUTHENTICATION_SECRET = sensitive(data.azurerm_key_vault_secret.DigicertTest-wa-MICROSOFT-PROVIDER-AUTHENTICATION-SECRET.value)
+    WEBSITES_ENABLE_APP_SERVICE_STORAGE      = "false"
+  }
   location            = "norwayeast"
   name                = "tommismadcertdashboard"
   resource_group_name = "DigicertTest"
