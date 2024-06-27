@@ -1,6 +1,9 @@
 resource "azurerm_resource_group" "res-0" {
   location = "northeurope"
   name     = "DSC_Test"
+    tags = {
+    TerraformStatus = "Managed"
+  }
 }
 resource "azurerm_automation_account" "res-1" {
   location            = "northeurope"
