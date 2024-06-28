@@ -1,8 +1,6 @@
 name: 'Terraform'
 on:
   pull_request:
-    branches: 
-      - "*"
     paths-ignore: 
       - ".devcontainer/**"
       - ".github/**"
@@ -10,10 +8,6 @@ on:
       - ".terraform.lock.hcl"
       - "README.md"
   push:
-    branches-ignore: 
-      - "main"
-    branches: 
-      - "*"
     paths-ignore: 
       - ".devcontainer/**"
       - ".github/**"
