@@ -9,7 +9,7 @@ resource "azurerm_resource_group" "DefaultResourceGroup-EUS" {
 }
 
 import {
-  id = "/subscriptions/3846f4f0-152c-49d5-9779-9998df4a2c0c/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-3846f4f0-152c-49d5-9779-9998df4a2c0c-eus"
+  id = "/subscriptions/3846f4f0-152c-49d5-9779-9998df4a2c0c/resourcegroups/defaultresourcegroup-eus/providers/Microsoft.Operationalinsights/workspaces/defaultworkspace-3846f4f0-152c-49d5-9779-9998df4a2c0c-eus"
   to = azurerm_log_analytics_workspace.DefaultWorkspace-3846f4f0-152c-49d5-9779-9998df4a2c0c-EUS
 }
 resource "azurerm_log_analytics_workspace" "DefaultWorkspace-3846f4f0-152c-49d5-9779-9998df4a2c0c-EUS" {
