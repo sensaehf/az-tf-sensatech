@@ -7,14 +7,6 @@ on:
       - ".gitignore"
       - ".terraform.lock.hcl"
       - "README.md"
-  push:
-    paths-ignore: 
-      - ".devcontainer/**"
-      - ".github/**"
-      - ".gitignore"
-      - ".terraform.lock.hcl"
-      - "README.md"
-
     
 permissions:
   contents: read
