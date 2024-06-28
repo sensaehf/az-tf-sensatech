@@ -1,3 +1,4 @@
+# Fetch Secret values to user in deployments
 data "azurerm_key_vault_secret" "DigicertTest-wa-AZURE-MDM-SECRET" {
   name         = "DigicertTest-wa-AZURE-MDM-SECRET"
   key_vault_id = data.azurerm_key_vault.terraformsecrets.id
