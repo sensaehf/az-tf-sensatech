@@ -59,6 +59,7 @@ resource "azurerm_key_vault" "TerraformSecrets" {
   tenant_id           = data.azurerm_client_config.current.tenant_id
   sku_name            = "standard"
   access_policy {
+    
     tenant_id = data.azurerm_client_config.current.tenant_id
     object_id = data.azurerm_client_config.current.object_id
 
@@ -74,4 +75,13 @@ resource "azurerm_key_vault" "TerraformSecrets" {
       "Get",
     ]
   }
+}
+
+
+resource "azurerm_key_vault_access_policy" "thomasAccessPolicy" {
+  key_vault_id = azurerm_key_vault.TerraformSecrets.id
+  tenant_id = data.azurerm_client_config.current.tenant_id
+  object_id = "6cbed2b9-f502-4efe-8774-21e8412c0e3e" #thomas@kerfisveita.is
+  secret_permissions = [ "Get", ]
+
 }
